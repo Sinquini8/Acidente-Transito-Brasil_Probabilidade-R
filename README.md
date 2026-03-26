@@ -75,11 +75,35 @@ Insight: Colisões são os acidentes mais comuns e as principais causas estão l
 <img width="200" height="538" alt="image" src="https://github.com/user-attachments/assets/1453d7c1-87a2-45a9-b20c-15f2133d24db" />
 
 
-
 ---
 
 ## 📚 Referências
 - Ministério dos Transportes; Polícia Rodoviária Federal. **Registro Nacional de Sinistros e Estatísticas de Trânsito (DATATRAN)**. Brasília, 2024.  
 - SITRAN. **Registro Nacional de Acidentes e Estatísticas de Trânsito**. Chapecó, SC, 2024.  
-- Observatório Nacional de Segurança Viária. **Relatório Anual 2024**. São Paulo: ONSV, 2024.  
+- Observatório Nacional de Segurança Viária. **Relatório Anual 2024**. São Paulo: ONSV, 2024.
 
+--- 
+
+## Como Executar
+
+- Clone este repositório:
+
+1. git clone https://github.com/Sinquini8/datatran-analysis.git
+
+2. Abra o arquivo scripts/analise_acidentes.R no RStudio ou Google Colab.
+
+3. Certifique-se de que o arquivo datatran2024.csv está na pasta data.
+
+4. Para executar o script, abra o arquivo analise_acidentes.R no RStudio ou outro editor de R e execute os comandos linha a linha ou em blocos.
+
+5. Se preferir, salve o script em um arquivo com extensão .R usando o Bloco de Notas ou outro editor de texto, e execute-o no RStudio ou via terminal R.
+
+6. Garanta que as bibliotecas dplyr e ggplot2 estejam instaladas e carregadas antes de executar o script, usando install.packages() e library().
+
+7. Execute os blocos de código para reproduzir os resultados e gráficos.
+
+--- 
+
+##  Autor
+
+Projeto desenvolvido por Victoria Sinquini, como parte de estudo acadêmico em Estatística E Probabilidade aplicada a dados reais de trânsito.
