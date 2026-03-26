@@ -1,0 +1,53 @@
+# Bibliotecas
+library(dplyr)
+library(ggplot2)
+
+# Carregar os dados
+dados <- read.csv("data/datatran2024.csv", stringsAsFactors = FALSE)
+
+# Estado com maior número de acidentes
+estado_acidentes <- dados %>%
+  group_by(uf) %>%
+  summarise(total = n()) %>%
+  arrange(desc(total))
+print(estado_acidentes)
+
+# Probabilidade de acidentes em clima claro
+claro <- nrow(filter(dados, condicao_metereologica == "Claro"))
+prob_claro <- claro / nrow(dados)
+print(paste("Probabilidade de acidentes em clima claro:", round(prob_claro, 3)))
+
+# Fase do dia com maior número de acidentes
+fase_dia_acidentes <- dados %>%
+  group_by(fase_dia) %>%
+  summarise(total = n())
+print(fase_dia_acidentes)
+
+# Tipos e causas predominantes
+causa_acidentes <- dados %>%
+  group_by(causa_acidente) %>%
+  summarise(total = n()) %>%
+  arrange(desc(total))
+print(causa_acidentes)
+
+# Gráficos de cada Análise
+ggplot(estado_acidentes, aes(x = reorder(uf, -total), y = total)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  labs(title = "Acidentes por Estado", x = "Estado", y = "Total de Acidentes") +
+  theme_minimal()
+
+ggplot(dados, aes(x = condicao_metereologica)) +
+  geom_bar(fill = "skyblue") +
+  labs(title = "Acidentes por Condição Meteorológica", x = "Condição", y = "Total") +
+  theme_minimal()
+
+ggplot(fase_dia_acidentes, aes(x = fase_dia, y = total)) +
+  geom_bar(stat = "identity", fill = "coral") +
+  labs(title = "Acidentes por Fase do Dia", x = "Fase do Dia", y = "Total") +
+  theme_minimal()
+
+ggplot(causa_acidentes, aes(x = reorder(causa_acidente, -total), y = total)) +
+  geom_bar(stat = "identity", fill = "tomato") +
+  labs(title = "Causas de Acidentes", x = "Causa", y = "Total") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
